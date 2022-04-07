@@ -1,33 +1,34 @@
 <?php
 
-require_once 'Car.php';
-require_once 'Bicycle.php';
+require_once 'player.php';
+require_once 'GoalKeeper.php';
+require_once 'team.php';
 
-$pinkSedan = new Car('pink', 4, 'fuel');
+$player1 = new Player('lulu', 'libellue');
+$player2 = new Player('tata', 'yoyo');
+$goal = new GoalKeeper('zgeg', 'de poulain', 26);
 
-$canyonero = new Car('red', 4, 'fuel');
+$team = new Team();
 
-$rockrider = new Bicycle('yellow');
+$team->addPlayer($player1);
 
-$tornado = new Bicycle('black');
+?>
 
-
-echo $tornado->forward();
-echo '<br> Vitesse du vélo : ' . $tornado->getCurrentSpeed() . ' km/h' . '<br>';
-echo $tornado->brake();
-echo '<br> Vitesse du vélo : ' . $tornado->getCurrentSpeed() . ' km/h' . '<br>';
-
-echo $rockrider->forward();;
-echo '<br> Vitesse du vélo : ' . $rockrider->getCurrentSpeed() . ' km/h' . '<br>';
-echo $rockrider->brake();
-echo '<br> Vitesse du vélo : ' . $rockrider->getCurrentSpeed() . ' km/h' . '<br>';
-
-echo $canyonero->forward();
-echo '<br> Vitesse de la voiture : ' . $canyonero->getCurrentSpeed() . ' km/h' . '<br>';
-echo $canyonero->brake();
-echo '<br> Vitesse de la voiture : ' . $canyonero->getCurrentSpeed() . ' km/h' . '<br>';
-
-echo $pinkSedan->forward();
-echo '<br> Vitesse de la voiture : ' . $pinkSedan->getCurrentSpeed() . ' km/h' . '<br>';
-echo $pinkSedan->brake();
-echo '<br> Vitesse de la voiture : ' . $pinkSedan->getCurrentSpeed() . ' km/h' . '<br>';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <?php
+        foreach ($team->players as $player) {
+            echo '<li>' .$player.  '</li>';
+        }
+        ?>
+    </ul>
+</body>
+</html>
