@@ -1,31 +1,10 @@
 <?php   
-
-    CONST ERROR_REQUIRED = 'Veuillez renseigner ce champ.';
-    CONST ERROR_LOGIN = "L'identifiant ne correspond pas";
-    $errors = [
-        'loginname' => ''
-    ];
-
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $_POST = filter_input_array(INPUT_POST, [
-        'loginname' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-        ]);
-        $loginname = $_POST['loginname'] ?? '';
-
-    if(!$loginname) {
-        $errors['loginname'] = ERROR_REQUIRED;
-    } 
-    }
-
     session_start();
 
-    $_SESSION['login'] = $loginname;
-    if($loginname !== $loginname){
-        $errors['loginname'] = ERROR_LOGIN;
+    if(isset($_POST['loginname'])){
+        $_SESSION['loginname'] = $_POST['loginname'];
+        header('Location: /');
     }
-
-    
-   
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +26,13 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div class="navbar-header">            
+               <div class="logout-button">
+                   <form action="../logout.php" method="post">
+                   <button type="submit" class="btn btn-danger">deconnection</button>
+                   </form>
+               </div>
+
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -78,6 +63,9 @@
         </div><!-- /.container-fluid -->
     </nav>
     <div class="container-fluid text-right">
-        <strong>nom</strong>
+        <strong> <?php if(isset($_SESSION['loginname'])){
+            echo 'hello' . ' ' . $_SESSION['loginname']
+        ;} else {
+            echo 'hello wilder';} ?> </strong>
     </div>
 </header>
