@@ -10,7 +10,7 @@ final class MotorWay extends Highway {
     }
 
     public function addVehicle(?vehicle $vehicle){
-        if ($vehicle instanceof Car) {
+        if ($vehicle instanceof Car || $vehicle instanceof Truck) {
         $this->setCurrentVehicles($vehicle);
         }
     }

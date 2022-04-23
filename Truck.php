@@ -17,10 +17,11 @@ class Truck extends Vehicle
 
     private int $stockLevel;
 
- public function __construct(string $color, int $nbSeats, string $energy, int $stockCapacity)
+ public function __construct(string $color, int $nbSeats, int $nbWheels, string $energy, int $energyLevel, int $stockCapacity)
 {
-    parent::__construct($color, $nbSeats);
+    parent::__construct($color, $nbSeats, $nbWheels);
     $this->energy = $energy;
+    $this->energyLevel = $energyLevel;
     $this->stockCapacity = $stockCapacity;
     $this->stockLevel = 0;
 }

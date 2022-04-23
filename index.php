@@ -2,20 +2,27 @@
 require_once 'Bicycle.php';
 require_once 'Car.php';
 require_once 'Truck.php';
+require_once 'Skateboard.php';
+require_once 'MotorWay.php';
+require_once 'PedestrianWay.php';
+require_once 'ResidentialWay.php';
 
 
-$pinkSedan = new Car('pink', 4, 'fuel');
+$pinkSedan = new Car('pink', 4, 4, 'fuel', 50);
 
-$canyonero = new Car('red', 4, 'fuel');
+$canyonero = new Car('red', 4, 4, 'fuel', 50);
 
-$rockrider = new Bicycle('yellow', 1);
+$rockrider = new Bicycle('yellow', 1, 2);
 
-$tornado = new Bicycle('black', 1);
+$tornado = new Bicycle('black', 1, 2);
 
-$bigDaddyTruck = new Truck('green', 4, 'fuel', 300);
+$bigDaddyTruck = new Truck('green', 4,  4, 'fuel', 75, 300);
 
-$uncleSam = new Truck('black', 4, 'fuel', 250);
+$uncleSam = new Truck('black', 4, 4, 'fuel', 75, 250);
 
+$tre = new Skateboard('black', 2, 2);
+
+$flip = new Skateboard('yellow', 2, 2);
 
 echo $tornado->forward();
 echo '<br> Vitesse du vélo : ' . $tornado->getCurrentSpeed() . ' km/h' . '<br>';
@@ -43,4 +50,34 @@ echo $bigDaddyTruck->brake();
 echo '<br> Vitesse du camion : ' . $bigDaddyTruck->getCurrentSpeed() . ' km/h' . '<br>';
 echo $bigDaddyTruck->setStockLevel(50) . '<br>';
 echo $bigDaddyTruck->getStockLevel() . '<br>';
+
+echo $tre->forward();
+echo '<br> Vitesse du skate : ' . $rockrider->getCurrentSpeed() . ' km/h' . '<br>';
+echo $tre->brake();
+echo '<br> Vitesse du skate : ' . $rockrider->getCurrentSpeed() . ' km/h' . '<br>';
+
+echo $flip->forward();
+echo '<br> Vitesse du skate : ' . $rockrider->getCurrentSpeed() . ' km/h' . '<br>';
+echo $flip->brake();
+echo '<br> Vitesse du skate : ' . $rockrider->getCurrentSpeed() . ' km/h' . '<br>';
  
+
+$motorWay = new MotorWay();
+
+$motorWay->addVehicle($pinkSedan);
+$motorWay->addVehicle($bigDaddyTruck);
+var_dump($motorWay);
+
+$pedestrian = new PedestrianWay();
+
+$pedestrian->addVehicle($rockrider);
+$pedestrian->addVehicle($tre);
+ var_dump($pedestrian);
+
+ $residential = new ResidentialWay();
+
+ $residential->addVehicle($pinkSedan);
+ $residential->addVehicle($rockrider);
+ $residential->addVehicle($bigDaddyTruck);
+ $residential->addVehicle($tre);
+  var_dump($residential);

@@ -2,8 +2,8 @@
 require_once 'Vehicle.php';
 require_once 'Car.php';
 
-abstract class HighWay extends Vehicle {
-    public array $currentVehicles;
+abstract class HighWay {
+    public array $currentVehicle;
     public int $nbLanes;
     public int $maxSpeed;
  
@@ -14,7 +14,7 @@ abstract class HighWay extends Vehicle {
         $this->maxSpeed = $maxSpeed;
     }
 
-    abstract function addVehicle(?vehicle $vehicle);
+    abstract function addVehicle(?Vehicle $vehicle);
     /* ceci est une fonction qui sera obligatoirement definit par les enfants,
      car elle sera differente pour chaque enfant,
      celle ci ne doit pas etre definit ici, c'est une signature de function*/
@@ -60,9 +60,8 @@ abstract class HighWay extends Vehicle {
 
     public function setCurrentVehicles($currentVehicles)
     {
-       
-        array_push($this->currentVehicles, $currentVehicles);
-    }
+        $this->currentVehicles[] = $currentVehicles;
+    } 
 
     //-----------------------------------------------------------
 

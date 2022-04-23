@@ -8,4 +8,9 @@ final class ResidentialWay extends Highway {
         parent::__construct(2, 50);
     }
 
+    public function addVehicle(?vehicle $vehicle){
+        if ($vehicle instanceof vehicle) {
+        $this->setCurrentVehicles($vehicle);
+        }
+    }
 }

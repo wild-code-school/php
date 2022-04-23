@@ -16,10 +16,11 @@ public const ALLOWED_ENERGIES = [
 
     private int $energyLevel;
 
- public function __construct(string $color, int $nbSeats, string $energy)
+ public function __construct(string $color, int $nbSeats, int $nbWheels, string $energy, int $energyLevel)
 {
-    parent::__construct($color, $nbSeats);
+    parent::__construct($color, $nbSeats, $nbWheels);
     $this->energy = $energy;
+    $this->energyLevel = $energyLevel;
 }
     public function getEnergy(): string
     {
