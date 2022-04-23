@@ -4,8 +4,7 @@ require_once 'Vehicle.php';
 
 
 
-class Car extends Vehicle
-{
+class Car extends Vehicle{
 
 public const ALLOWED_ENERGIES = [
     'fuel',
@@ -13,14 +12,15 @@ public const ALLOWED_ENERGIES = [
     ];
 
     private string $energy;
-
     private int $energyLevel;
+    private bool $hasParkBrake;
 
- public function __construct(string $color, int $nbSeats, int $nbWheels, string $energy, int $energyLevel)
+ public function __construct(string $color, int $nbSeats, int $nbWheels, string $energy, int $energyLevel, bool $hasParkBrake)
 {
     parent::__construct($color, $nbSeats, $nbWheels);
     $this->energy = $energy;
     $this->energyLevel = $energyLevel;
+    $this->hasParkBrake = $hasParkBrake;
 }
     public function getEnergy(): string
     {
@@ -43,4 +43,24 @@ public function setEnergy(string $energy): Car
     {
         $this->energyLevel = $energyLevel;
     }
+
+    public function getHasParkBrake():bool
+    {
+        return $this->hasParkBrake;
+    }
+
+    public function setHasParkBrake($hasParkBrake): void
+    {
+        $this->hasParkBrake = $hasParkBrake;
+
+    }
+
+    public function start():string{
+        if ($this->hasParkBrake === true){
+            throw new Exception("D'OH!");
+        }elseif ($this->hasParkBrake === false){
+           return 'You can go !';
+        }
+    }
+    
 }

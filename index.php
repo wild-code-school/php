@@ -8,9 +8,9 @@ require_once 'PedestrianWay.php';
 require_once 'ResidentialWay.php';
 
 
-$pinkSedan = new Car('pink', 4, 4, 'fuel', 50);
+$pinkSedan = new Car('pink', 4, 4, 'fuel', 50, true);
 
-$canyonero = new Car('red', 4, 4, 'fuel', 50);
+$canyonero = new Car('red', 4, 4, 'fuel', 50, false);
 
 $rockrider = new Bicycle('yellow', 1, 2);
 
@@ -59,13 +59,14 @@ echo '<br> Vitesse du skate : ' . $rockrider->getCurrentSpeed() . ' km/h' . '<br
 echo $flip->forward();
 echo '<br> Vitesse du skate : ' . $rockrider->getCurrentSpeed() . ' km/h' . '<br>';
 echo $flip->brake();
-echo '<br> Vitesse du skate : ' . $rockrider->getCurrentSpeed() . ' km/h' . '<br>';
- 
+echo '<br> Vitesse du skate : ' . $rockrider->getCurrentSpeed() . ' km/h' . '<br>'; 
+
 
 $motorWay = new MotorWay();
 
 $motorWay->addVehicle($pinkSedan);
 $motorWay->addVehicle($bigDaddyTruck);
+$motorWay->addVehicle($canyonero);
 var_dump($motorWay);
 
 $pedestrian = new PedestrianWay();
@@ -81,3 +82,19 @@ $pedestrian->addVehicle($tre);
  $residential->addVehicle($bigDaddyTruck);
  $residential->addVehicle($tre);
   var_dump($residential);
+
+    try{
+      echo $pinkSedan->start();
+    }catch(Exception $e){
+      echo$pinkSedan->setHasParkBrake(false);
+    }finally {
+      "echo 'OKEY let's go!";
+    }
+
+    try{
+        echo $canyonero->start();
+    }catch(Exception $e){
+        echo$canyonero->setHasParkBrake(false);
+    }finally {
+        "echo 'OKEY let's go!";
+    }
