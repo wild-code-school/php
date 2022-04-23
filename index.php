@@ -84,17 +84,18 @@ $pedestrian->addVehicle($tre);
   var_dump($residential);
 
     try{
-      echo $pinkSedan->start();
+    $pinkSedan->start();
     }catch(Exception $e){
-      echo$pinkSedan->setHasParkBrake(false);
+      echo 'Exception received:'. $e->getMessage();
+      $pinkSedan->start();
     }finally {
-      "echo 'OKEY let's go!";
+      echo "OKEY let's go!";
     }
 
     try{
-        echo $canyonero->start();
+    $canyonero->start();
     }catch(Exception $e){
-        echo$canyonero->setHasParkBrake(false);
+        echo 'Exception received:'. $e->getMessage();
     }finally {
-        "echo 'OKEY let's go!";
+        echo "OKEY let's go!";
     }
