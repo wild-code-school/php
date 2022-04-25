@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -21,6 +22,15 @@ $loginname = $_POST['loginname'];
       }
     }
 
+=======
+<?php   
+    session_start();
+
+    if(isset($_POST['loginname'])){
+        $_SESSION['loginname'] = $_POST['loginname'];
+        header('Location: /');
+    }
+>>>>>>> a06a239ffedb234ed23d04938ccc5418f01ec0e6
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +52,13 @@ $loginname = $_POST['loginname'];
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div class="navbar-header">            
+               <div class="logout-button">
+                   <form action="../logout.php" method="post">
+                   <button type="submit" class="btn btn-danger">deconnection</button>
+                   </form>
+               </div>
+
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -73,6 +89,13 @@ $loginname = $_POST['loginname'];
         </div><!-- /.container-fluid -->
     </nav>
     <div class="container-fluid text-right">
+<<<<<<< HEAD
         <strong> <p> hello</p> </strong>
+=======
+        <strong> <?php if(isset($_SESSION['loginname'])){
+            echo 'hello' . ' ' . $_SESSION['loginname']
+        ;} else {
+            echo 'hello wilder';} ?> </strong>
+>>>>>>> a06a239ffedb234ed23d04938ccc5418f01ec0e6
     </div>
 </header>
