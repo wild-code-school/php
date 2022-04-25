@@ -82,20 +82,10 @@ $pedestrian->addVehicle($tre);
  $residential->addVehicle($bigDaddyTruck);
  $residential->addVehicle($tre);
   var_dump($residential);
+    
+var_dump($pinkSedan->switchoff(true));
+var_dump($pinkSedan->switchon(true));
 
-    try{
-    $pinkSedan->start();
-    }catch(Exception $e){
-      echo 'Exception received:'. $e->getMessage();
-      $pinkSedan->start();
-    }finally {
-      echo "OKEY let's go!";
-    }
-
-    try{
-    $canyonero->start();
-    }catch(Exception $e){
-        echo 'Exception received:'. $e->getMessage();
-    }finally {
-        echo "OKEY let's go!";
-    }
+$rockrider->setCurrentSpeed(10);
+var_dump($rockrider->switchon());
+ 

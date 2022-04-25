@@ -64,19 +64,14 @@ public function setEnergy(string $energy): Car
         }
     }
 
-    public function switchon(bool $valueOn): bool
+    public function switchon(): bool
     {
-        if($valueOn === true) {
-            return "true";
-        }
-        
+            return true;
     }
+    
 
-    public function switchoff(bool $valueOff): bool
-    {
-        if($valueOff === false) {
-            return "false";
-        }
-        
+    public function switchoff(): bool
+    {    
+        return false;
     }
 }

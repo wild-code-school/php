@@ -1,6 +1,6 @@
 <?php
 
 interface LightableInterface{
-   public function switchon(bool $valueOn): bool;
-   public function switchoff( bool $valueOff): bool;
+   public function switchon(): bool;
+   public function switchoff(): bool;
 }
