@@ -1,31 +1,26 @@
-<?php   
+<?php
 
-    CONST ERROR_REQUIRED = 'Veuillez renseigner ce champ.';
-    CONST ERROR_LOGIN = "L'identifiant ne correspond pas";
-    $errors = [
-        'loginname' => ''
-    ];
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+$_POST = filter_input_array(INPUT_POST, [
+  'loginname' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+])
+;}
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $_POST = filter_input_array(INPUT_POST, [
-        'loginname' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-        ]);
-        $loginname = $_POST['loginname'] ?? '';
+$loginname = $_POST['loginname'];
 
-    if(!$loginname) {
-        $errors['loginname'] = ERROR_REQUIRED;
-    } 
+  {
+    // Les identifiants sont transmis ?
+    if(!empty($loginname)) 
+      {
+        // On ouvre la session
+        session_start();
+        // On enregistre le login en session
+        $_SESSION['login'] = $loginname;
+        // On redirige vers le fichier admin.php
+        var_dump($_SESSION);
+      }
     }
 
-    session_start();
-
-    $_SESSION['login'] = $loginname;
-    if($loginname !== $loginname){
-        $errors['loginname'] = ERROR_LOGIN;
-    }
-
-    
-   
 ?>
 
 <!DOCTYPE html>
@@ -78,6 +73,6 @@
         </div><!-- /.container-fluid -->
     </nav>
     <div class="container-fluid text-right">
-        <strong>nom</strong>
+        <strong> <p> hello</p> </strong>
     </div>
 </header>
